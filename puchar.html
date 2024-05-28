@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="images/znicz.png">
+    <link rel="stylesheet" href="style/Menu.css">
+    <link rel="stylesheet" href="style/układ.css">
+    <title>Prezentacja</title>
+
+    <style>
+        .slider {
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+            position: relative;
+        }
+        .slide {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        .slide.active {
+            opacity: 1;
+        }
+        h4{
+            text-align: center;
+            color: rgb(5, 7, 8);
+        }
+        body {
+            background-image: url('images/Boisko.jpg');
+            background-size: auto;
+            background-position: center;
+        }
+    </style>
+</head>
+<header>
+    <h1>🏟️Najważniejsze Puchary🏟️</h1>
+</header>
+<nav>
+    <a href="index.html">Menu</a>
+     
+    <a href="druz.html">Boisko</a>
+  
+    <a href="ligi.html">Ligi</a>
+  
+    <a href="stad.html">Stadiony</a>
+  
+    <a href="tabelka.html">Liga</a>
+    <a href="boisko.html">Rysowanie</a>
+</nav>
+<body>
+    <h4>
+    <div class="slider">
+        <div class="slide active" id="slide1">
+            <h1>Liga Mistrzów</h1>
+            <img src="images/lm.jpg" alt="Slajd 1">
+            <p>Liga Mistrzów UEFA to piłkarski turniej dla <br> najlepszych zespołów z Europy.</p>
+        </div>
+        <div class="slide" id="slide2">
+            <h1>Liga Europy</h1>
+            <img src="images/le.jpg" alt="Slajd 2">
+            <p>Liga Europy to jeden z dwóch obecnie rozgrywanych turniejów <br> organizowanych przez europejską federację piłkarską UEFA. </p>
+        </div>
+        <div class="slide" id="slide3">
+            <h1>Liga Konferencji</h1>
+            <img src="images/lk.png" alt="Slajd 3">
+            <p>Jest to liga w której biorą udział zespoły które się <br> nie zakfalifikowały do LM oraz LE</p>
+        </div>
+        <div class="slide" id="slide4">
+            <h1>Superpuchar Europy</h1>
+            <img src="images/sp.jpg" alt="Slajd 4">
+            <p>Superpuchar UEFA 2024 to mecz piłki nożnej, który odbędzie <br>  się 14 sierpnia 2024 roku na Stadionie Narodowym w Warszawie.</p>
+        </div>
+        <div class="slide" id="slide5">
+            <h1>Puchar Polski</h1>
+            <img src="images/puchar p.jpg" alt="Slajd 5"> 
+            <p> Rozgrywki piłkarskie, organizowane co roku przez Polski Związek </p>
+        </div>
+
+
+        <div class="slide" id="slide6">
+            <h1>Puchar Europy</h1>
+            <img src="images/PE.jpg" alt="Slajd 5"> 
+            <p>W tych rozgrywkach biorą udział zespoły z Europy. </p>
+        </div>
+        <div class="slide" id="slide7">
+            <h1>Mistrzostwa Świata</h1>
+            <img src="images/ms.jpg" alt="Slajd 5"> 
+            <p>W tych rozgrywkach biorą udział zespoły z całego świata  </p>
+        </div>
+        <div class="slide" id="slide8">
+            <h1>Superpuchar Polski</h1>
+            <img src="images/spp.jpg" alt="Slajd 5"> 
+            <p>Puchar rozgrywany w Polsce.</p>
+        </div>
+    </div>
+    </h4>
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        let currentSlide = 0;
+
+        function showSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (n + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+
+        document.onkeydown = function(e) {
+            e = e || window.event;
+            if (e.keyCode == '37') {
+                showSlide(currentSlide - 1);
+            } else if (e.keyCode == '39') {
+                showSlide(currentSlide + 1);
+            }
+        };
+
+        showSlide(0);
+    </script>
+</body>
+</html>

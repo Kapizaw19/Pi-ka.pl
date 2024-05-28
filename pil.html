@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rysowanie flag na canvas</title>
+    <link rel="shortcut icon" href="images/znicz.png">
+    <link rel="stylesheet" href="style/Menu.css">
+    <link rel="stylesheet" href="style/układ.css">
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+        button {
+            margin: 5px;
+        }
+        body {
+            background-image: url('images/Tapeta.jpg');
+            background-size: auto;
+            background-position: center;
+            font-family: Arial, sans-serif;
+            color: black;
+            line-height: 2.8;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Rysowanie Flag</h1>
+        
+       
+    </header>
+    <nav>
+        <a href="index.html">Menu</a>
+        <a href="new.html">Aktualności</a>
+        <a href="druz.html">Boisko</a>
+        <a href="ligi.html">Ligi</a>
+        <a href="puchar.html">Puchary</a>
+        <a href="formul.html">Kontakt</a>
+     
+    </nav>
+
+    <h1>Rysowanie flag</h1>
+    <canvas id="flagCanvas" width="600" height="400"></canvas>
+    <br>
+    <button onclick="drawFlag('Poland')">Polska</button>
+    <button onclick="drawFlag('Germany')">Niemcy</button>
+    <button onclick="drawFlag('France')">Francja</button>
+    <button onclick="drawFlag('Italy')">Włochy</button>
+    <button onclick="drawFlag('Spain')">Hiszpania</button>
+    <button onclick="drawFlag('Portugal')">Portugalia</button>
+    <button onclick="drawFlag('Japan')">Japonia</button>
+    <button onclick="drawFlag('USA')">USA</button>
+    <button onclick="drawFlag('Brazil')">Brazylia</button>
+    <button onclick="drawFlag('Canada')">Kanada</button>
+    <button onclick="clearCanvas()">Wyczyść</button>
+
+    <script>
+        const canvas = document.getElementById('flagCanvas');
+        const ctx = canvas.getContext('2d');
+
+        function clearCanvas() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+
+        function drawFlag(country) {
+            clearCanvas();
+            switch(country) {
+                case 'Poland':
+                    drawPolandFlag();
+                    break;
+                case 'Germany':
+                    drawGermanyFlag();
+                    break;
+                case 'France':
+                    drawFranceFlag();
+                    break;
+                case 'Italy':
+                    drawItalyFlag();
+                    break;
+                case 'Spain':
+                    drawSpainFlag();
+                    break;
+                case 'Portugal':
+                    drawPortugalFlag();
+                    break;
+                case 'Japan':
+                    drawJapanFlag();
+                    break;
+                case 'USA':
+                    drawUSAFlag();
+                    break;
+                case 'Brazil':
+                    drawBrazilFlag();
+                    break;
+                case 'Canada':
+                    drawCanadaFlag();
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        function drawPolandFlag() {
+            ctx.fillStyle = 'white';
+            ctx.fillRect(0, 0, canvas.width, canvas.height / 2);
+            ctx.fillStyle = 'red';
+            ctx.fillRect(0, canvas.height / 2, canvas.width, canvas.height / 2);
+        }
+
+        function drawGermanyFlag() {
+            const colors = ['black', 'red', 'yellow'];
+            colors.forEach((color, index) => {
+                ctx.fillStyle = color;
+                ctx.fillRect(0, index * (canvas.height / 3), canvas.width, canvas.height / 3);
+            });
+        }
+
+        function drawFranceFlag() {
+            const colors = ['blue', 'white', 'red'];
+            colors.forEach((color, index) => {
+                ctx.fillStyle = color;
+                ctx.fillRect(index * (canvas.width / 3), 0, canvas.width / 3, canvas.height);
+            });
+        }
+
+        function drawItalyFlag() {
+            const colors = ['green', 'white', 'red'];
+            colors.forEach((color, index) => {
+                ctx.fillStyle = color;
+                ctx.fillRect(index * (canvas.width / 3), 0, canvas.width / 3, canvas.height);
+            });
+        }
+
+        function drawSpainFlag() {
+            ctx.fillStyle = 'red';
+            ctx.fillRect(0, 0, canvas.width, canvas.height / 4);
+            ctx.fillRect(0, 3 * (canvas.height / 4), canvas.width, canvas.height / 4);
+            ctx.fillStyle = 'yellow';
+            ctx.fillRect(0, canvas.height / 4, canvas.width, canvas.height / 2);
+        }
+
+        function drawPortugalFlag() {
+            ctx.fillStyle = 'green';
+            ctx.fillRect(0, 0, canvas.width * 2 / 5, canvas.height);
+            ctx.fillStyle = 'red';
+            ctx.fillRect(canvas.width * 2 / 5, 0, canvas.width * 3 / 5, canvas.height);
+            // Draw the simple coat of arms
+            ctx.fillStyle = 'yellow';
+            ctx.beginPath();
+            ctx.arc(canvas.width * 2 / 5, canvas.height / 2, canvas.height / 8, 0, Math.PI * 2);
+            ctx.fill();
+        }
+
+        function drawJapanFlag() {
+            ctx.fillStyle = 'white';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = 'red';
+            ctx.beginPath();
+            ctx.arc(canvas.width / 2, canvas.height / 2, canvas.height / 4, 0, Math.PI * 2);
+            ctx.fill();
+        }
+
+        function drawUSAFlag() {
+            ctx.fillStyle = 'red';
+            for(let i = 0; i < 7; i++) {
+                ctx.fillRect(0, i * 2 * (canvas.height / 13), canvas.width, canvas.height / 13);
+            }
+            ctx.fillStyle = 'white';
+            for(let i = 0; i < 6; i++) {
+                ctx.fillRect(0, (i * 2 + 1) * (canvas.height / 13), canvas.width, canvas.height / 13);
+            }
+            ctx.fillStyle = 'blue';
+            ctx.fillRect(0, 0, canvas.width * 0.4, canvas.height * 7 / 13);
+            ctx.fillStyle = 'white';
+            const starRadius = canvas.height / 40;
+            const rows = 5;
+            const cols = 6;
+            for(let row = 0; row < rows; row++) {
+                for(let col = 0; col < cols; col++) {
+                    ctx.beginPath();
+                    ctx.arc(col * 2 * starRadius + starRadius, row * 2 * starRadius + starRadius, starRadius, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+            }
+        }
+
+        function drawBrazilFlag() {
+            ctx.fillStyle = 'green';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = 'yellow';
+            ctx.beginPath();
+            ctx.moveTo(canvas.width / 2, 0);
+            ctx.lineTo(0, canvas.height / 2);
+            ctx.lineTo(canvas.width / 2, canvas.height);
+            ctx.lineTo(canvas.width, canvas.height / 2);
+            ctx.closePath();
+            ctx.fill();
+            ctx.fillStyle = 'blue';
+            ctx.beginPath();
+            ctx.arc(canvas.width / 2, canvas.height / 2, canvas.height / 4, 0, Math.PI * 2);
+            ctx.fill();
+        }
+
+        function drawCanadaFlag() {
+            ctx.fillStyle = 'red';
+            ctx.fillRect(0, 0, canvas.width / 4, canvas.height);
+            ctx.fillRect(3 * canvas.width / 4, 0, canvas.width / 4, canvas.height);
+            ctx.fillStyle = 'white';
+            ctx.fillRect(canvas.width / 4, 0, canvas.width / 2, canvas.height);
+            // Draw a simple maple leaf as a placeholder
+            ctx.fillStyle = 'red';
+            ctx.beginPath();
+            ctx.moveTo(canvas.width / 2, canvas.height / 4);
+            ctx.lineTo(canvas.width / 2.1, canvas.height / 2);
+            ctx.lineTo(canvas.width / 2, canvas.height / 1.5);
+            ctx.lineTo(canvas.width / 1.9, canvas.height / 2);
+            ctx.closePath();
+            ctx.fill();
+        }
+    </script>
+</body>
+</html>

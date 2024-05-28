@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="images/znicz.png">
+    <link rel="stylesheet" href="style/Menu.css">
+    <link rel="stylesheet" href="style/układ.css">
+    <link rel="stylesheet" href="style/oblicz.css">
+    <title>Kalkulator Prawdopodobieństwa Zwycięstwa Meczu Piłkarskiego</title>
+    <style>
+        body {
+           background-image: url('images/LEWY.jpg');
+           background-size: auto;
+           background-position: center;
+           font-family: Arial, sans-serif;
+           color: black;
+           line-height: 2.8;
+       }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><p>🎉Zwycięzca🎉</p></h1>
+    </header>
+    <nav>
+        <a href="index.html">Menu</a>
+     
+        <a href="druz.html">Boisko</a>
+      
+        <a href="ligi.html">Ligi</a>
+      
+        <a href="stad.html">Stadiony</a>
+      
+        <a href="tabelka.html">Liga</a>
+        <a href="boisko.html">Rysowanie</a>
+    </nav>
+    <div class="container">
+        <h1>Kalkulator Prawdopodobieństwa Zwycięstwa Meczu Piłkarskiego</h1>
+        <form id="calculateForm">
+            <label for="team1Goals">Liczba goli drużyny 1:</label>
+            <input type="number" id="team1Goals" name="team1Goals" min="0" max="10" required>
+            <label for="team2Goals">Liczba goli drużyny 2:</label>
+            <input type="number" id="team2Goals" name="team2Goals" min="0" max="10" required>
+            <label for="team1YellowCards">Liczba żółtych kartek drużyny 1:</label>
+            <input type="number" id="team1YellowCards" name="team1YellowCards" min="0" max="10" required>
+            <label for="team2YellowCards">Liczba żółtych kartek drużyny 2:</label>
+            <input type="number" id="team2YellowCards" name="team2YellowCards" min="0" max="10" required>
+            <label for="team1RedCards">Liczba czerwonych kartek drużyny 1:</label>
+            <input type="number" id="team1RedCards" name="team1RedCards" min="0" max="5" required>
+            <label for="team2RedCards">Liczba czerwonych kartek drużyny 2:</label>
+            <input type="number" id="team2RedCards" name="team2RedCards" min="0" max="5" required>
+            <label for="team1CornerKicks">Liczba rzutów rożnych drużyny 1:</label>
+            <input type="number" id="team1CornerKicks" name="team1CornerKicks" min="0" max="10" required>
+            <label for="team2CornerKicks">Liczba rzutów rożnych drużyny 2:</label>
+            <input type="number" id="team2CornerKicks" name="team2CornerKicks" min="0" max="10" required>
+            <label for="stadiumNoise">Hałas na stadionie (od 0 do 100):</label>
+            <input type="range" id="stadiumNoise" name="stadiumNoise" min="0" max="100" required>
+            <button type="submit">Oblicz</button>
+        </form>
+        <div id="result" class="result"></div>
+    </div>
+    <script src="script/obliczanie.js"></script>
+</body>
+</html>

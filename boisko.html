@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rysowanie stadionu na canvas</title>
+    <link rel="shortcut icon" href="images/znicz.png">
+    <link rel="stylesheet" href="style/Menu.css">
+    <link rel="stylesheet" href="style/układ.css">
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+        button {
+            margin: 5px;
+        }
+        body {
+            background-image: url('images/Tapeta.jpg');
+            background-size: auto;
+            background-position: center;
+            font-family: Arial, sans-serif;
+            color: black;
+            line-height: 2.8;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Narysuj boisko</h1>
+        
+       
+    </header>
+    <nav>
+        <a href="index.html">Menu</a>
+     
+        <a href="druz.html">Boisko</a>
+      
+        <a href="ligi.html">Ligi</a>
+      
+        <a href="stad.html">Stadiony</a>
+      
+        <a href="tabelka.html">Liga</a>
+        <a href="boisko.html">Rysowanie</a>
+    </nav>
+    <h1>Rysowanie stadionu</h1>
+    <canvas id="stadiumCanvas" width="800" height="600"></canvas>
+    <br>
+    <button onclick="drawField()">Rysuj Boisko</button>
+    <button onclick="drawStands()">Rysuj Trybuny</button>
+    <button onclick="drawGoals()">Rysuj Bramki</button>
+    <button onclick="drawLines()">Rysuj Linie</button>
+    <button onclick="clearCanvas()">Wyczyść</button>
+
+    <script>
+        const canvas = document.getElementById('stadiumCanvas');
+        const ctx = canvas.getContext('2d');
+
+        function clearCanvas() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+
+        function drawField() {
+            // Zielone boisko
+            ctx.fillStyle = 'green';
+            ctx.fillRect(50, 50, canvas.width - 100, canvas.height - 100);
+        }
+
+        function drawStands() {
+            // Trybuny po bokach
+            ctx.fillStyle = 'gray';
+            ctx.fillRect(0, 0, 50, canvas.height);
+            ctx.fillRect(canvas.width - 50, 0, 50, canvas.height);
+            // Trybuny za bramkami
+            ctx.fillRect(0, 0, canvas.width, 50);
+            ctx.fillRect(0, canvas.height - 50, canvas.width, 50);
+        }
+
+        function drawGoals() {
+            // Bramki
+            ctx.fillStyle = 'white';
+            ctx.fillRect(60, canvas.height / 2 - 50, 10, 100);
+            ctx.fillRect(canvas.width - 70, canvas.height / 2 - 50, 10, 100);
+        }
+
+        function drawLines() {
+            // Środkowa linia boiska
+            ctx.strokeStyle = 'white';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(canvas.width / 2, 50);
+            ctx.lineTo(canvas.width / 2, canvas.height - 50);
+            ctx.stroke();
+
+            // Koło środkowe
+            ctx.beginPath();
+            ctx.arc(canvas.width / 2, canvas.height / 2, 50, 0, Math.PI * 2);
+            ctx.stroke();
+
+            // Linie pola karnego
+            ctx.strokeRect(60, canvas.height / 2 - 150, 60, 300);
+            ctx.strokeRect(canvas.width - 120, canvas.height / 2 - 150, 60, 300);
+
+            // Małe pole karne
+            ctx.strokeRect(60, canvas.height / 2 - 75, 30, 150);
+            ctx.strokeRect(canvas.width - 90, canvas.height / 2 - 75, 30, 150);
+
+            // Punkty karne
+            ctx.beginPath();
+            ctx.arc(120, canvas.height / 2, 2, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.arc(canvas.width - 120, canvas.height / 2, 2, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Koła przy polach karnych
+            ctx.beginPath();
+            ctx.arc(120, canvas.height / 2, 60, -Math.PI / 3, Math.PI / 3);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.arc(canvas.width - 120, canvas.height / 2, 60, 2 * Math.PI / 3, -2 * Math.PI / 3);
+            ctx.stroke();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piłka Nożna - Formularz</title>
+    <link rel="shortcut icon" href="images/znicz.png">
+    <link rel="stylesheet" href="style/Menu.css">
+    <link rel="stylesheet" href="style/układ.css">
+    <link rel="stylesheet" href="style/form.css">
+
+<style>
+         
+    body {
+        background-image: url('images/Tapeta.jpg');
+        background-size: auto;
+        background-position: center;
+        font-family: Arial, sans-serif;
+        color: black;
+        line-height: 2.8;
+    }
+    h1, h2, h3 {
+            color: #f9f9f9;
+    }
+
+
+    p {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+</style>
+<body>
+    <header>
+        <h1>Formularz zgłoszeniowy do klubu</h1>
+    </header>
+    <nav>
+        <a href="index.html">Menu</a>
+        <a href="new.html">Aktualności</a>
+        <a href="druz.html">Boisko</a>
+        <a href="ligi.html">Ligi</a>
+        <a href="puchar.html">Puchary</a>
+        <a href="formul.html">Kontakt</a>
+     
+    </nav>
+</head>    
+    <main> 
+        <article>
+        <h2>Prosimy o Kontakt</h2> 
+
+
+  <form id="footballForm" method="post" enctype="multipart/form-data">
+    <h2>Formularz zgłoszeniowy</h2>
+    <label for="name">Imię i nazwisko:</label>
+    <input type="text" id="name" name="name" required><br>
+
+    <label for="email">Adres e-mail:</label>
+    <input type="email" id="email" name="email" required><br>
+
+    <label for="birthdate">Data urodzenia:</label>
+    <input type="date" id="birthdate" name="birthdate" required><br>
+
+    <label for="position">Pozycja na boisku:</label>
+    <select id="position" name="position" required>
+      <option value="">Wybierz pozycję</option>
+      <option value="bramkarz">Bramkarz</option>
+      <option value="obrońca">Obrońca</option>
+      <option value="pomocnik">Pomocnik</option>
+      <option value="napastnik">Napastnik</option>
+    </select><br>
+ 
+   <h3> 
+    <label for="experience">Doświadczenie w piłce nożnej:</label>
+    <textarea id="experience" name="experience" rows="4" cols="50" required></textarea><br>
+
+    <label for="agreement">Wyrażam zgodę na przetwarzanie moich danych osobowych:</label>
+    <input type="checkbox" id="agreement" name="agreement" required><br>
+
+    <label for="photo">Zdjęcie:</label>
+    <input type="file" id="photo" name="photo"><br>
+
+    <input type="submit" value="Wyślij">
+    <input type="reset" value="Kasuj formularz">
+  </form>
+  <script src="script.js"></script>
+
+    </h3>
+     
+           
+      </article>
+    <footer>
+        Projekt strony internetowej wykonany w ramach 
+zaliczenia przedmiotu MO: TIiSKwE na kierunku Energetyka.
+    </footer>
+</body>
+</html>
